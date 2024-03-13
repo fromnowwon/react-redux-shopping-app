@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../redux/action";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
@@ -7,6 +9,11 @@ const Product = () => {
 	const { id } = useParams();
 	const [product, setProduct] = useState([]);
 	const [loading, setLoading] = useState(false);
+
+	const dispatch = useDispatch();
+	const addProduct = (product) => {
+		dispatch(addItem(product));
+	};
 
 	useEffect(() => {
 		const getProduct = async () => {
@@ -45,6 +52,7 @@ const Product = () => {
 						src={product.image}
 						alt={product.title}
 						className="object-fit-contain"
+						width="400px"
 						height="400px"
 					/>
 				</div>
@@ -57,7 +65,12 @@ const Product = () => {
 					</p>
 					<h3 className="display-6 fw-bold my-4">$ {product.price}</h3>
 					<p className="lead">{product.description}</p>
-					<button className="btn btn-outline-dark px-4 py-2">장바구니</button>
+					<button
+						className="btn btn-outline-dark px-4 py-2"
+						onClick={() => addProduct(product)}
+					>
+						장바구니
+					</button>
 					<Link to="/cart" className="btn btn-dark px-3 py-2 ms-2">
 						장바구니 보기
 					</Link>
