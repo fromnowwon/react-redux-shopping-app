@@ -6,8 +6,11 @@ const Home = () => {
 		<div className="hero">
 			{/* <img src="/assets/bg.png" className="card-img-top" alt="..." /> */}
 			<div className="card border-0">
-				<div className="card-body">
-					<div className="card-img-overlay d-flex flex-column justify-content-center">
+				<div
+					className="card-body"
+					style={{ height: "450px", backgroundColor: "skyblue" }}
+				>
+					<div className="card-img-overlay d-flex flex-column justify-content-center h-100">
 						<div className="container">
 							<h5 className="card-title display-3 fw-folder mb-0">
 								NEW SEASON ARRIVALS
